@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --color-alpine-sky: #B3D9F2;
+  --color-romantic-pink: #FFB6CB;
+  --color-lavender: #C7A6F5;
+  --color-soft-cream: #FFF7F0;
+  --color-deep-alpine: #263C59;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+.font-handwritten {
+  font-family: var(--font-hand);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.dark .glass-panel {
+  background: rgba(18, 29, 46, 0.82);
+  border: 1px solid rgba(179, 217, 242, 0.18);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(38, 60, 89, 0.08);
+}
+
+.dark .glass-nav {
+  background: rgba(15, 24, 39, 0.86);
+  border-bottom: 1px solid rgba(179, 217, 242, 0.14);
+}
+
+.glass-portal-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 247, 240, 0.74) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.84);
+  box-shadow: 0 14px 36px -12px rgba(38, 60, 89, 0.18);
+}
+
+.dark .glass-portal-card {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 40, 61, 0.84) 0%,
+    rgba(18, 28, 45, 0.88) 100%
+  );
+  border: 1px solid rgba(179, 217, 242, 0.22);
+  box-shadow: 0 14px 36px -12px rgba(0, 0, 0, 0.45);
+}
+
+/* Vinyl spin — compositor-only */
+@keyframes vinyl-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-vinyl-spin {
+  animation: vinyl-spin 14s linear infinite;
+}
+
+.animate-vinyl-paused {
+  animation: vinyl-spin 14s linear infinite;
+  animation-play-state: paused;
+}
+
+/* Petal fall — compositor-only */
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.78;
+  }
+  85% {
+    opacity: 0.68;
+  }
+  100% {
+    transform: translate3d(65px, 105vh, 0) rotate(260deg);
+    opacity: 0;
+  }
+}
+
+.animate-petal {
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-petal,
+  .animate-vinyl-spin {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

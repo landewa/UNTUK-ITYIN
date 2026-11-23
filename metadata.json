@@ -1,0 +1,6 @@
+{
+  "name": "Our Little Universe",
+  "description": "A special Swiss Alps digital world made for Ityin — memories, music, letters, journey, games, and shared dreams.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
